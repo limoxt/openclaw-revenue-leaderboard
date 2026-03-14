@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import leaderboardData from "@/data/projects.json";
 import { categories, type Project } from "@/lib/types";
-import { formatCurrency, formatDateLabel } from "@/lib/utils";
+import { formatCompactNumber, formatCurrency, formatDateLabel } from "@/lib/utils";
 
 type HomeProps = {
   searchParams?: {
@@ -21,10 +21,17 @@ export default function Home({ searchParams }: HomeProps) {
     activeCategory ? project.category === activeCategory : true
   ) as Project[];
 
-  const categoryTotals = categories.map((category) => ({
-    category,
-    count: leaderboardData.projects.filter((project) => project.category === category).length
-  }));
+  const categoryTotals = categories.reduce<Record<string, number>>((totals, category) => {
+    totals[category] = leaderboardData.projects.filter(
+      (project) => project.category === category
+    ).length;
+    return totals;
+  }, {});
+  const topProject = leaderboardData.projects[0] as Project | undefined;
+  const verifiedProjects = leaderboardData.projects.filter(
+    (project) => project.verified
+  ).length;
+  const filteredRevenue = projects.reduce((total, project) => total + project.revenue30d, 0);
 
   return (
     <main className="min-h-screen overflow-hidden">
@@ -43,6 +50,18 @@ export default function Home({ searchParams }: HomeProps) {
               <p className="mt-5 max-w-2xl text-balance text-base leading-7 text-muted-foreground sm:text-lg">
                 追踪 OpenClaw 生态中已验证项目的收入表现、增长速度与类别分布，帮助创始人快速看到真正跑出收入的模式。
               </p>
+
+              <div className="mt-6 flex flex-wrap gap-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
+                <span className="rounded-full border border-border/70 bg-background/55 px-4 py-2">
+                  {verifiedProjects} Verified Launches
+                </span>
+                <span className="rounded-full border border-border/70 bg-background/55 px-4 py-2">
+                  {Object.keys(categoryTotals).length} Categories
+                </span>
+                <span className="rounded-full border border-border/70 bg-background/55 px-4 py-2">
+                  Static JSON MVP
+                </span>
+              </div>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <div className="rounded-3xl border border-primary/20 bg-primary/10 px-5 py-4">
@@ -90,13 +109,15 @@ export default function Home({ searchParams }: HomeProps) {
                     当前共收录 {leaderboardData.totalProjects} 个项目，榜单页展示的是已同步的头部样本。
                   </p>
                   <div className="grid grid-cols-2 gap-3 text-sm">
-                    {categoryTotals.slice(0, 6).map((item) => (
+                    {categories.slice(0, 6).map((category) => (
                       <div
-                        key={item.category}
+                        key={category}
                         className="rounded-2xl border border-border/70 bg-secondary/40 px-4 py-3"
                       >
-                        <div className="text-muted-foreground">{item.category}</div>
-                        <div className="mt-1 font-medium text-foreground">{item.count}</div>
+                        <div className="text-muted-foreground">{category}</div>
+                        <div className="mt-1 font-medium text-foreground">
+                          {categoryTotals[category]}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -115,6 +136,19 @@ export default function Home({ searchParams }: HomeProps) {
                   </div>
                 </CardContent>
               </Card>
+              <Card className="bg-background/70">
+                <CardContent className="p-6">
+                  <div className="text-xs uppercase tracking-[0.22em] text-accent">Top Revenue</div>
+                  <div className="mt-3 text-xl font-semibold text-foreground">
+                    {topProject?.name ?? "TBD"}
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {topProject
+                      ? `${formatCurrency(topProject.revenue30d)} in the last 30 days`
+                      : "No data"}
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -128,8 +162,22 @@ export default function Home({ searchParams }: HomeProps) {
             <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
               使用静态 JSON 数据渲染，支持按类别筛选，适合作为 Vercel 上线的 MVP 榜单首页。
             </p>
+            <div className="mt-4 flex flex-wrap gap-3 text-sm text-muted-foreground">
+              <span className="rounded-full border border-border/70 bg-background/55 px-4 py-2">
+                当前筛选项目 {projects.length}
+              </span>
+              <span className="rounded-full border border-border/70 bg-background/55 px-4 py-2">
+                当前筛选收入 {formatCurrency(filteredRevenue)}
+              </span>
+              <span className="rounded-full border border-border/70 bg-background/55 px-4 py-2">
+                平均单项{" "}
+                {projects.length
+                  ? formatCurrency(Math.round(filteredRevenue / projects.length))
+                  : "$0"}
+              </span>
+            </div>
           </div>
-          <CategoryFilter activeCategory={activeCategory} />
+          <CategoryFilter activeCategory={activeCategory} counts={categoryTotals} />
         </section>
 
         <section>
@@ -152,12 +200,17 @@ export default function Home({ searchParams }: HomeProps) {
                 现在就提交项目、收入区间和证明材料。通过审核后会进入公开榜单，并在后续版本中展示更多增长与历史数据。
               </p>
             </div>
-            <Button asChild size="lg">
-              <Link href="/submit">
-                提交你的项目
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="rounded-2xl border border-border/70 bg-background/50 px-5 py-4 text-sm text-muted-foreground">
+                总 30 天收入样本约 {formatCompactNumber(leaderboardData.totalRevenue)}
+              </div>
+              <Button asChild size="lg">
+                <Link href="/submit">
+                  提交你的项目
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </section>
       </div>
