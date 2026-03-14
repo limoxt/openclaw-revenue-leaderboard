@@ -22,15 +22,15 @@ export function formatCompactNumber(value: number) {
 
 export function formatPercent(value: number | null) {
   if (value === null) {
-    return "Pending";
+    return "待定";
   }
 
   return `${value > 0 ? "+" : ""}${value.toLocaleString("en-US")}%`;
 }
 
 export function formatDateLabel(value: string) {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
+  return new Intl.DateTimeFormat("zh-CN", {
+    month: "long",
     day: "numeric",
     year: "numeric"
   }).format(new Date(value));
