@@ -1,7 +1,7 @@
 {
   "lastUpdated": "2026-03-14",
   "totalRevenue": 380795,
-  "totalProjects": 165,
+  "totalProjects": 169,
   "projects": [
     {
       "rank": 1,
@@ -203,6 +203,63 @@
       "growth": null,
       "verified": true,
       "website": "https://clawhosters.com"
+    },
+    {
+      "rank": 16,
+      "name": "水产市场",
+      "slug": "shuichan-shichang",
+      "description": "OpenClaw 中文技能商店，提供飞书、微信、B站、中文财报等国内场景技能，让 Agent 自动回顾对话、打包工作成果。",
+      "category": "Marketplace",
+      "revenue30d": null,
+      "mrr": null,
+      "totalRevenue": null,
+      "growth": null,
+      "verified": false,
+      "website": "https://openclawmp.cc",
+      "region": "中国"
+    },
+    {
+      "rank": 17,
+      "name": "OpenClaw 中文社区版",
+      "slug": "openclaw-cn",
+      "description": "OpenClaw 官方中文本地化版本，内置钉钉、企业微信、飞书、QQ 以及国内网络环境优化，支持所有操作系统和平台。",
+      "category": "Developer Tools",
+      "revenue30d": null,
+      "mrr": null,
+      "totalRevenue": null,
+      "growth": null,
+      "verified": false,
+      "website": "https://github.com/jiulingyun/openclaw-cn",
+      "stars": 890,
+      "region": "中国"
+    },
+    {
+      "rank": 18,
+      "name": "OpenClaw 中文社区",
+      "slug": "clawd-cn",
+      "description": "OpenClaw 中文社区官网，提供 Docker 快速部署、macOS 菜单栏应用、中文文档等资源。",
+      "category": "Community",
+      "revenue30d": null,
+      "mrr": null,
+      "totalRevenue": null,
+      "growth": null,
+      "verified": false,
+      "website": "https://clawd.org.cn",
+      "region": "中国"
+    },
+    {
+      "rank": 19,
+      "name": "OpenClaw 中文教程",
+      "slug": "awesome-openclaw-tutorial",
+      "description": "从零开始玩转 OpenClaw：最全面的中文教程，涵盖安装、配置、实战案例和避坑指南。",
+      "category": "Education",
+      "revenue30d": null,
+      "mrr": null,
+      "totalRevenue": null,
+      "growth": null,
+      "verified": false,
+      "website": "https://github.com/xianyu110/awesome-openclaw-tutorial",
+      "region": "中国"
     }
   ]
 }
