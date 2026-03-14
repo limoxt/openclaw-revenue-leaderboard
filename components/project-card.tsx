@@ -15,7 +15,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <CardContent className="space-y-4 p-5">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <div className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+            <div className="text-sm text-muted-foreground">
               #{project.rank}
             </div>
             <div className="mt-2 flex items-center gap-2">
@@ -41,26 +41,26 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-sm leading-6 text-muted-foreground">{project.description}</p>
 
         <div className="grid grid-cols-2 gap-3 text-sm">
-          <div className="rounded-2xl border border-border/70 bg-background/60 p-3">
-            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          <div className="rounded-md border border-border bg-background p-3">
+            <div className="text-xs text-muted-foreground">
               类别
             </div>
             <div className="mt-2 font-medium">{project.category}</div>
           </div>
-          <div className="rounded-2xl border border-border/70 bg-background/60 p-3">
-            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          <div className="rounded-md border border-border bg-background p-3">
+            <div className="text-xs text-muted-foreground">
               30天收入
             </div>
             <div className="mt-2 font-medium">{formatCurrency(project.revenue30d)}</div>
           </div>
-          <div className="rounded-2xl border border-border/70 bg-background/60 p-3">
-            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          <div className="rounded-md border border-border bg-background p-3">
+            <div className="text-xs text-muted-foreground">
               MRR
             </div>
             <div className="mt-2 font-medium">{formatCurrency(project.mrr)}</div>
           </div>
-          <div className="rounded-2xl border border-border/70 bg-background/60 p-3">
-            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          <div className="rounded-md border border-border bg-background p-3">
+            <div className="text-xs text-muted-foreground">
               增长率
             </div>
             <div className="mt-2 font-medium">{formatPercent(project.growth)}</div>

@@ -60,7 +60,7 @@ export function SubmitForm() {
       <div className="grid gap-2">
         <Label htmlFor="category">类别</Label>
         <select
-          className="flex h-11 w-full rounded-2xl border border-input bg-background/80 px-4 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           defaultValue=""
           id="category"
           name="category"
@@ -92,7 +92,7 @@ export function SubmitForm() {
       <div className="grid gap-2">
         <Label htmlFor="proof">证明方式：截图上传</Label>
         <label
-          className="flex cursor-pointer items-center gap-3 rounded-2xl border border-dashed border-border bg-background/50 px-4 py-4 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+          className="flex cursor-pointer items-center gap-3 rounded-lg border border-dashed border-border bg-background px-4 py-4 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
           htmlFor="proof"
         >
           {proofName ? (

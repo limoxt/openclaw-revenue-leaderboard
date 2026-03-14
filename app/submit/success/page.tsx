@@ -9,11 +9,11 @@ export default function SubmitSuccessPage() {
     <main className="flex min-h-screen items-center justify-center px-4 py-10 sm:px-6 lg:px-8">
       <Card className="w-full max-w-2xl overflow-hidden">
         <CardContent className="p-8 sm:p-10">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/12 text-emerald-300">
-            <CheckCircle2 className="h-7 w-7" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
+            <CheckCircle2 className="h-6 w-6" />
           </div>
-          <p className="mt-6 text-xs uppercase tracking-[0.24em] text-primary">Submitted</p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground">
+          <p className="mt-5 text-sm text-primary">已提交</p>
+          <h1 className="mt-2 text-3xl font-semibold text-foreground">
             感谢提交
           </h1>
           <p className="mt-4 text-base leading-7 text-muted-foreground">

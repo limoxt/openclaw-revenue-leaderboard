@@ -17,23 +17,23 @@ export default function SubmitPage() {
         </Link>
 
         <Card className="overflow-hidden">
-          <CardHeader className="border-b border-border/70 bg-secondary/30">
-            <CardDescription className="uppercase tracking-[0.24em] text-primary">
-              Project Intake
+          <CardHeader className="border-b border-border bg-secondary/20">
+            <CardDescription className="text-sm text-primary">
+              项目提交
             </CardDescription>
-            <CardTitle className="text-4xl">提交你的 OpenClaw 项目</CardTitle>
+            <CardTitle className="text-3xl">提交你的 OpenClaw 项目</CardTitle>
             <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
               填写基础信息、收入数据和联系邮箱。截图为可选字段，提交后会进入人工审核流程。
             </p>
           </CardHeader>
           <CardContent className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.2fr_0.8fr]">
             <SubmitForm />
-            <div className="space-y-4 rounded-3xl border border-border/70 bg-background/50 p-5">
+            <div className="space-y-4 rounded-lg border border-border bg-background p-5">
               <div>
-                <div className="text-xs uppercase tracking-[0.24em] text-primary">
-                  Review Flow
-                </div>
-                <h2 className="mt-3 text-2xl font-semibold text-foreground">
+                <p className="text-sm text-primary">
+                  审核流程
+                </p>
+                <h2 className="mt-2 text-xl font-semibold text-foreground">
                   审核标准
                 </h2>
               </div>
