@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, ShieldCheck } from "lucide-react";
+import { ArrowRight, BarChart3, Github, ShieldCheck } from "lucide-react";
 
 import { CategoryFilter } from "@/components/category-filter";
 import { LeaderboardTable } from "@/components/leaderboard-table";
@@ -57,7 +57,7 @@ export default function Home({ searchParams }: HomeProps) {
                   {Object.keys(categoryTotals).length} 个类别
                 </span>
                 <span className="rounded-md border border-border bg-background px-3 py-1.5">
-                  静态数据 MVP
+                  总收入 {formatCompactNumber(leaderboardData.totalRevenue)}
                 </span>
               </div>
 
@@ -209,7 +209,49 @@ export default function Home({ searchParams }: HomeProps) {
             </div>
           </div>
         </section>
+
+        <section className="rounded-xl border border-dashed border-primary/30 bg-primary/5 p-8 text-center sm:p-10">
+          <p className="text-sm text-muted-foreground">想构建你自己的 AI Agent？</p>
+          <h2 className="mt-2 text-2xl font-semibold text-foreground">
+            Build your own agent →{" "}
+            <a
+              className="text-primary hover:underline"
+              href="https://agentforge.sh"
+              rel="noreferrer"
+              target="_blank"
+            >
+              agentforge.sh
+            </a>
+          </h2>
+        </section>
       </div>
+
+      <footer className="mt-16 border-t border-border bg-card/50">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <div className="text-sm text-muted-foreground">
+            <p className="font-medium text-foreground">OpenClaw 收入排行榜</p>
+            <p className="mt-1">追踪 OpenClaw 生态中已验证项目的收入表现。</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+            <a
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+              href="https://github.com/nicekate/openclaw-revenue-leaderboard"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <Github className="h-4 w-4" />
+              GitHub
+            </a>
+            <a
+              className="transition-colors hover:text-foreground"
+              href="mailto:hello@openclaw.org"
+            >
+              联系我们
+            </a>
+            <span>© {new Date().getFullYear()} OpenClaw</span>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

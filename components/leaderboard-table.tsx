@@ -1,4 +1,4 @@
-import { ArrowUpRight, BadgeCheck } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, Star } from "lucide-react";
 
 import { ProjectCard } from "@/components/project-card";
 import { Badge } from "@/components/ui/badge";
@@ -42,7 +42,7 @@ export function LeaderboardTable({ projects }: LeaderboardTableProps) {
                 <td className="px-6 py-5">
                   <div className="flex items-start gap-4">
                     <a
-                      className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-background/70 text-muted-foreground transition-colors hover:text-foreground"
+                      className="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-background/70 text-muted-foreground transition-colors hover:text-foreground"
                       href={project.website}
                       rel="noreferrer"
                       target="_blank"
@@ -50,8 +50,14 @@ export function LeaderboardTable({ projects }: LeaderboardTableProps) {
                       <ArrowUpRight className="h-4 w-4" />
                     </a>
                     <div>
-                      <div className="text-sm font-semibold text-foreground">
+                      <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
                         {project.name}
+                        {project.stars ? (
+                          <span className="inline-flex items-center gap-1 text-xs font-normal text-muted-foreground">
+                            <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                            {project.stars.toLocaleString()}
+                          </span>
+                        ) : null}
                       </div>
                       <p className="mt-1 max-w-xl text-sm leading-6 text-muted-foreground">
                         {project.description}

@@ -22,6 +22,7 @@ export type Project = {
   growth: number | null;
   verified: boolean;
   website: string;
+  stars?: number;
 };
 
 export type LeaderboardData = {

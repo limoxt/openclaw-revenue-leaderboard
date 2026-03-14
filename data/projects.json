@@ -14,7 +14,8 @@
       "totalRevenue": 96000,
       "growth": null,
       "verified": true,
-      "website": "https://www.shopclawmart.com"
+      "website": "https://www.shopclawmart.com",
+      "stars": 320
     },
     {
       "rank": 2,
@@ -27,7 +28,8 @@
       "totalRevenue": 53000,
       "growth": 1588,
       "verified": true,
-      "website": "https://open-claw.org"
+      "website": "https://open-claw.org",
+      "stars": 1240
     },
     {
       "rank": 3,
@@ -92,7 +94,8 @@
       "totalRevenue": 15000,
       "growth": null,
       "verified": true,
-      "website": "https://startclaw.com"
+      "website": "https://startclaw.com",
+      "stars": 210
     },
     {
       "rank": 8,
@@ -105,7 +108,8 @@
       "totalRevenue": 43000,
       "growth": null,
       "verified": true,
-      "website": "https://openclawkit.com"
+      "website": "https://openclawkit.com",
+      "stars": 580
     },
     {
       "rank": 9,
@@ -118,7 +122,8 @@
       "totalRevenue": 8700,
       "growth": null,
       "verified": true,
-      "website": "https://coral.inc"
+      "website": "https://coral.inc",
+      "stars": 450
     },
     {
       "rank": 10,
@@ -157,7 +162,8 @@
       "totalRevenue": 18000,
       "growth": null,
       "verified": true,
-      "website": "https://clawwrapper.com"
+      "website": "https://clawwrapper.com",
+      "stars": 890
     },
     {
       "rank": 13,

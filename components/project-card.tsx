@@ -1,4 +1,4 @@
-import { ArrowUpRight, BadgeCheck } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, Star } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,6 +20,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
             <div className="mt-2 flex items-center gap-2">
               <h3 className="text-lg font-semibold">{project.name}</h3>
+              {project.stars ? (
+                <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                  <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                  {project.stars.toLocaleString()}
+                </span>
+              ) : null}
               {project.verified ? (
                 <Badge variant="success" className="gap-1">
                   <BadgeCheck className="h-3.5 w-3.5" />
@@ -29,7 +35,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
           </div>
           <a
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-secondary/70 text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-secondary/70 text-muted-foreground transition-colors hover:text-foreground"
             href={project.website}
             rel="noreferrer"
             target="_blank"
