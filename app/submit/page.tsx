@@ -26,8 +26,23 @@ export default function SubmitPage() {
               填写基础信息、收入数据和联系邮箱。截图为可选字段，提交后会进入人工审核流程。
             </p>
           </CardHeader>
-          <CardContent className="p-6 sm:p-8">
+          <CardContent className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.2fr_0.8fr]">
             <SubmitForm />
+            <div className="space-y-4 rounded-3xl border border-border/70 bg-background/50 p-5">
+              <div>
+                <div className="text-xs uppercase tracking-[0.24em] text-primary">
+                  Review Flow
+                </div>
+                <h2 className="mt-3 text-2xl font-semibold text-foreground">
+                  审核标准
+                </h2>
+              </div>
+              <div className="space-y-3 text-sm leading-6 text-muted-foreground">
+                <p>1. 核对项目是否基于 OpenClaw 构建，并确认网站可访问。</p>
+                <p>2. 检查收入截图与填写金额是否一致，必要时会邮件补充确认。</p>
+                <p>3. 通过审核后进入榜单，未通过的数据不会公开展示。</p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

@@ -1,8 +1,8 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import { UploadCloud } from "lucide-react";
+import { CheckCircle2, UploadCloud } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +13,12 @@ import { categories } from "@/lib/types";
 export function SubmitForm() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [proofName, setProofName] = useState<string | null>(null);
+
+  const handleProofChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    setProofName(file?.name ?? null);
+  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -43,6 +49,7 @@ export function SubmitForm() {
       <div className="grid gap-2">
         <Label htmlFor="description">项目描述</Label>
         <Textarea
+          className="min-h-36"
           id="description"
           name="description"
           placeholder="简述你的产品、目标用户和核心成果。"
@@ -88,8 +95,12 @@ export function SubmitForm() {
           className="flex cursor-pointer items-center gap-3 rounded-2xl border border-dashed border-border bg-background/50 px-4 py-4 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
           htmlFor="proof"
         >
-          <UploadCloud className="h-5 w-5 text-primary" />
-          <span>可选：上传 Stripe、Paddle 或后台截图</span>
+          {proofName ? (
+            <CheckCircle2 className="h-5 w-5 text-emerald-300" />
+          ) : (
+            <UploadCloud className="h-5 w-5 text-primary" />
+          )}
+          <span>{proofName ?? "可选：上传 Stripe、Paddle 或后台截图"}</span>
         </label>
         <Input
           accept="image/*"
@@ -97,7 +108,11 @@ export function SubmitForm() {
           id="proof"
           name="proof"
           type="file"
+          onChange={handleProofChange}
         />
+        <p className="text-xs text-muted-foreground">
+          支持常见图片格式。V1 仅做前端收集示意，提交后进入人工审核。
+        </p>
       </div>
 
       <div className="grid gap-2">

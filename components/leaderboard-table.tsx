@@ -12,6 +12,11 @@ type LeaderboardTableProps = {
 export function LeaderboardTable({ projects }: LeaderboardTableProps) {
   return (
     <div className="space-y-4">
+      <div className="flex items-center justify-between px-1 text-xs uppercase tracking-[0.24em] text-muted-foreground">
+        <span>Showing {projects.length} Projects</span>
+        <span>Sorted by 30D Revenue</span>
+      </div>
+
       <div className="hidden overflow-hidden rounded-3xl border border-border/80 bg-card/90 shadow-glow backdrop-blur md:block">
         <table className="w-full border-collapse text-left">
           <thead className="bg-secondary/60 text-xs uppercase tracking-[0.22em] text-muted-foreground">
@@ -19,7 +24,7 @@ export function LeaderboardTable({ projects }: LeaderboardTableProps) {
               <th className="px-6 py-4 font-medium">排名</th>
               <th className="px-6 py-4 font-medium">名称</th>
               <th className="px-6 py-4 font-medium">类别</th>
-              <th className="px-6 py-4 font-medium">月收入</th>
+              <th className="px-6 py-4 font-medium">30天收入</th>
               <th className="px-6 py-4 font-medium">MRR</th>
               <th className="px-6 py-4 font-medium">增长率</th>
               <th className="px-6 py-4 font-medium">状态</th>

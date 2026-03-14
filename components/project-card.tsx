@@ -23,7 +23,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               {project.verified ? (
                 <Badge variant="success" className="gap-1">
                   <BadgeCheck className="h-3.5 w-3.5" />
-                  Verified
+                  已验证
                 </Badge>
               ) : null}
             </div>
@@ -43,13 +43,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="grid grid-cols-2 gap-3 text-sm">
           <div className="rounded-2xl border border-border/70 bg-background/60 p-3">
             <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Category
+              类别
             </div>
             <div className="mt-2 font-medium">{project.category}</div>
           </div>
           <div className="rounded-2xl border border-border/70 bg-background/60 p-3">
             <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              30D Revenue
+              30天收入
             </div>
             <div className="mt-2 font-medium">{formatCurrency(project.revenue30d)}</div>
           </div>
@@ -61,7 +61,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
           <div className="rounded-2xl border border-border/70 bg-background/60 p-3">
             <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Growth
+              增长率
             </div>
             <div className="mt-2 font-medium">{formatPercent(project.growth)}</div>
           </div>
